@@ -2,6 +2,7 @@ import telebot
 from telebot import types
 import os
 from dotenv import load_dotenv
+from flask import Flask, request
 
 # Load environment variables
 load_dotenv()
@@ -10,6 +11,9 @@ load_dotenv()
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 CHANNEL_ID = os.getenv('CHANNEL_ID')  # The channel users must join
 CHANNEL_LINK = os.getenv('CHANNEL_LINK')  # Invite link to the channel
+
+# Initialize Flask app
+app = Flask(__name__)
 
 # Initialize the bot
 bot = telebot.TeleBot(BOT_TOKEN)
@@ -337,7 +341,30 @@ def handle_all_messages(message):
         "I didn't understand that. Please use the provided buttons to navigate."
     )
 
-# Start the bot
+# Add these new routes at the end of the file
+@app.route('/' + BOT_TOKEN, methods=['POST'])
+def webhook():
+    json_string = request.get_data().decode('utf-8')
+    update = telebot.types.Update.de_json(json_string)
+    bot.process_new_updates([update])
+    return ''
+
+@app.route('/')
+def webhook_info():
+    return 'Bot is running'
+
+# Modified running section
 if __name__ == "__main__":
-    print("Bot started...")
-    bot.polling(none_stop=True) 
+    # Remove webhook and polling settings
+    bot.remove_webhook()
+    
+    # Set webhook
+    port = int(os.environ.get('PORT', 5000))
+    app_url = os.environ.get('APP_URL', '')
+    if app_url:
+        bot.set_webhook(url=app_url + '/' + BOT_TOKEN)
+        # Start Flask server
+        app.run(host='0.0.0.0', port=port)
+    else:
+        # If no APP_URL, use polling (local development)
+        bot.infinity_polling() 
