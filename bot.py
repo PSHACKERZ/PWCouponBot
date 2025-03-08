@@ -22,17 +22,17 @@ bot = telebot.TeleBot(BOT_TOKEN)
 coupon_codes = {
     "9": {
         "NEEV 2026 (Class 9th)": {
-            "code": "9911XEDL",
+            "code": "9310CCJZ",
             "image": "assets/NEEV 2026 (Class 9th).png"
         },
         "RADIANT 2026 (Class 9th)": {
-            "code": "9911XEDL",
+            "code": "9310CCJZ",
             "image": "assets/RADIANT 2026 (Class 9th).png"
         }
     },
     "10": {
         "Udaan 2026 (Class 10th)": {
-            "code": "9911XEDL",
+            "code": "9310CCJZ",
             "image": "assets/Udaan 2026 (Class 10th).png"
         },
         "VICTORY 2026 (Class 10th)": {
@@ -46,7 +46,7 @@ coupon_codes = {
             "image": "assets/UDAY 2026 (Class 11th).png"
         },
         "Arjuna JEE 2026 (Class 11th)": {
-            "code": "9911XEDL",
+            "code": "9310CCJZ",
             "image": "assets/Arjuna JEE 2026 (Class 11th).png"
         },
         "Arjuna NEET 2026 (Class 11th)": {
@@ -56,7 +56,7 @@ coupon_codes = {
     },
     "12": {
         "PARISHRAM 2026 (Class 12th)": {
-            "code": "9911XEDL",
+            "code": "9310CCJZ",
             "image": "assets/PARISHRAM 2026 (Class 12th).png"
         },
         "Lakshya JEE 2026 (Class 12th)": {
@@ -64,7 +64,7 @@ coupon_codes = {
             "image": "assets/Lakshya JEE 2026 (Class 12th).png"
         },
         "Lakshya NEET 2026 (Class 12th)": {
-            "code": "9911XEDL",
+            "code": "9310CCJZ",
             "image": "assets/Lakshya NEET 2026 (Class 12th).png"
         }
     }
